@@ -23,8 +23,10 @@ data['Group'].replace(['Nondemented', 'Demented'],[0, 1], inplace=True)
 data['M/F'].replace(['M', 'F'],[0, 1], inplace=True)
 data=data.drop(data[data["Group"]=="Converted"].index)
 
-x_input = st.slider("Choose X input", min_value=0.0, max_value=1.0,key='x')
-y_input = st.slider("Choose Y input", min_value=0.0, max_value=1.0,key='y')
+age_input = st.slider("Choose Age input", min_value=60, max_value=100)
+eudc_input = st.slider("Choose years of education input", min_value=6, max_value=23)
+
+
 k = st.slider("Choose value of K", min_value=1, max_value=10,key='k')
 
 input = (x_input,y_input)
@@ -51,7 +53,7 @@ x_test = scaler.transform(x_test)
 
 
 from sklearn.neighbors import KNeighborsClassifier
-classifier = KNeighborsClassifier(n_neighbors=7)
+classifier = KNeighborsClassifier(n_neighbors=k)
 classifier.fit(x_train, y_train)
 
 
@@ -79,4 +81,4 @@ if st.button('Run model'):
     st.text(score)
     st.header("Confusion matrix")
     st.write(mat)
-    # st.write(classification_report(y_test, y_pred))
+    st.write(classification_report(y_test, y_pred))
