@@ -36,10 +36,11 @@ if st.button('Data info'):
     s = buffer.getvalue()
     st.text(s)
 
+x = data.drop(['Group',"index"], axis = 1)
+y = data["Group"]
 
 ## split train / test
-cols=list(data.columns)
-x_train,x_test,y_train,y_test = train_test_split(data[cols[1:]],data[cols[0:1]], train_size=0.8, test_size=0.2, shuffle=False)
+x_train,x_test,y_train,y_test = train_test_split(X, y, test_size=0.20, random_state=101)
 
 scaler = StandardScaler()
 scaler.fit(x_train)
@@ -47,11 +48,6 @@ scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
 
-y_train=y_train.astype('int')
-y_test=y_test.astype('int')
-
-y_train=list(y_train["Group"])
-y_test=list(y_test["Group"])
 
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=7)
@@ -67,16 +63,6 @@ if st.button('Show fearures correlation matrix'):
     st.header("Heatmap")
     st.pyplot(c1)
 
-
-## split train / test
-cols=list(data.columns)
-x_train,x_test,y_train,y_test = train_test_split(data[["MMSE","CDR"]],data[cols[0:1]], train_size=0.8, test_size=0.2, shuffle=False)
-
-y_train=y_train.astype('int')
-y_test=y_test.astype('int')
-
-y_train=list(y_train["Group"])
-y_test=list(y_test["Group"])
 
 if st.button('Run model'):
     # model=RandomForestClassifier()
