@@ -36,7 +36,7 @@ if st.button('Data info'):
     s = buffer.getvalue()
     st.text(s)
 
-x = data.drop(['Group',"index"], axis = 1)
+x = data.drop(['Group'], axis = 1)
 y = data["Group"]
 
 ## split train / test
