@@ -40,7 +40,7 @@ x = data.drop(['Group'], axis = 1)
 y = data["Group"]
 
 ## split train / test
-x_train,x_test,y_train,y_test = train_test_split(X, y, test_size=0.20, random_state=101)
+x_train,x_test,y_train,y_test = train_test_split(x, y, test_size=0.20, random_state=101)
 
 scaler = StandardScaler()
 scaler.fit(x_train)
