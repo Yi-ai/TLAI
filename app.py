@@ -81,5 +81,5 @@ if st.button('Run model'):
     st.text(score)
     st.header("Confusion matrix")
     st.write(mat)
-    st.write(st.table(classification_report(y_test, y_pred)))
+    st.text(classification_report(y_test, y_pred))
 
