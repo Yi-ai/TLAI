@@ -38,6 +38,7 @@ if st.button('Data info'):
 
 x = data.drop(['Group'], axis = 1)
 y = data["Group"]
+y = y.astype('int')
 
 ## split train / test
 x_train,x_test,y_train,y_test = train_test_split(x, y, test_size=0.20, random_state=101)
@@ -78,4 +79,4 @@ if st.button('Run model'):
     st.text(score)
     st.header("Confusion matrix")
     st.write(mat)
-    st.write(classification_report(y_test, y_pred))
+    # st.write(classification_report(y_test, y_pred))
