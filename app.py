@@ -24,12 +24,12 @@ data['M/F'].replace(['M', 'F'],[0, 1], inplace=True)
 data=data.drop(data[data["Group"]=="Converted"].index)
 
 age_input = st.slider("Choose Age input", min_value=60, max_value=100)
-eudc_input = st.slider("Choose years of education input", min_value=6, max_value=23)
-
+educ_input = st.slider("Choose years of education input", min_value=6, max_value=23)
+gender_input = st.selectbox('What is your gender? (0 = M, 1 = F)', (0,1))
 
 k = st.slider("Choose value of K", min_value=1, max_value=10,key='k')
 
-input = (x_input,y_input)
+input = (age_input, educ_input, gender_input)
 
 if st.button('Data info'):
     st.header("Data info")
