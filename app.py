@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from pathlib import Path
 import io
 
 from sklearn.model_selection import train_test_split
@@ -14,7 +13,6 @@ st.header("Alzheimer's Disease Prediction")
 st.subheader("Predicts the diagnosis of Alzheimer's disease based on the patient's data.")
 st.write("This application uses KNN")
 
-# data_path = Path(__file__).parents[1] /"alzheimer.csv"
 data=pd.read_csv("alzheimer.csv")
 
 
