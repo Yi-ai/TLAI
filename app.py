@@ -42,7 +42,7 @@ cols=list(data.columns)
 x_train,x_test,y_train,y_test = train_test_split(data[cols[1:]],data[cols[0:1]], train_size=0.8, test_size=0.2, shuffle=False)
 
 scaler = StandardScaler()
-scaler.fit(X_train)
+scaler.fit(x_train)
 
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
